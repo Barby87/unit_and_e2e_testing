@@ -18,6 +18,8 @@ export const LoginForm = ({ isLoading }) => {
       });
     }
 
+  // useCallback recuerda si la funcion se llamó anteriormente con cierta data.
+  // No se ejecuta el código que hay dentro de la función a menos que haya un cambio en sus dependencias. Sirve para optimización
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault();

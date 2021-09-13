@@ -1,6 +1,6 @@
 import React from "react";
 import Enzyme from "enzyme";
-import { configure, shallow, mount } from "enzyme";
+import { configure, mount } from "enzyme";
 //import Adapter from "enzyme-adapter-react-16";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import { Login } from "./Login";
@@ -14,6 +14,7 @@ describe("Login", () => {
   let wrapper;
 
   beforeEach(() => {
+    // Componente Provider se guarda dentro de la variable wrapper
     wrapper = mount(
       <Provider store={store}>
         <Login />
@@ -22,6 +23,7 @@ describe("Login", () => {
   });
 
   test("render login component, its fields and buttons", () => {
+    // Confirmando que el componente se montó correctamente, y no es undefined
     expect(wrapper.find(Login)).toBeDefined();
 
     // const emailField = wrapper.find(".email");

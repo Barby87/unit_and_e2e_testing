@@ -7,7 +7,7 @@ import FunctionalComponent from "./FunctionalComponent";
 configure({ adapter: new Adapter() });
 
 describe("<FunctionalComponent/>", () => {
-  test.skip("render", () => {
+  test("render", () => {
     const wrapper = shallow(<FunctionalComponent />);
     expect(wrapper.find(FunctionalComponent)).toBeDefined();
   });
