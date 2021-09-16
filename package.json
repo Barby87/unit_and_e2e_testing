@@ -2,7 +2,7 @@
   "name": "testing-class",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Barby87.github.io/unit_and_e2e_testing.git",
+  "homepage": "https://github.io/unit_and_e2e_testing",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
