@@ -11,7 +11,8 @@ function App() {
 
   return (
     <div className="App container">
-      <Router>
+      {/* Se agrega basename como ruta base */}
+      <Router basename="unit_and_e2e_testing">
         <nav>
           <ul>
             <li>
@@ -26,6 +27,9 @@ function App() {
           <Route path="/" exact>
             <Login/>
           </Route>
+          {/* <Route path="/unit_and_e2e_testing" exact>
+            <Login/>
+          </Route> */}
           <PrivateRoute path="/users" exact isLogin={isLogin} component={UsersList}/>
         </Switch>
       </Router>

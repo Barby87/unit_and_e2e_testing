@@ -1,8 +1,10 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import { userLogin } from "../../store/login/actions";
 
 export const LoginForm = ({ isLoading }) => {
+  const history = useHistory();
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -18,15 +20,14 @@ export const LoginForm = ({ isLoading }) => {
       });
     }
 
+  const cb = () => history.push("/users");
   // useCallback recuerda si la funcion se llamó anteriormente con cierta data.
   // No se ejecuta el código que hay dentro de la función a menos que haya un cambio en sus dependencias. Sirve para optimización
-  const handleSubmit = useCallback(
-    (event) => {
+  const handleSubmit = (event) => {
       event.preventDefault();
-      dispatch(userLogin(form));
-    },
-    [dispatch, form]
-  );
+      // Se le pone como argumento un callback con el history.push para que espere la respuesta de la api antes de dirigir a esa ruta
+      dispatch(userLogin(form, cb));
+    };
 
   return (
     <form noValidate autoComplete="off" onSubmit={handleSubmit}>

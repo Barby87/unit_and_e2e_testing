@@ -1,6 +1,6 @@
 import { LOGIN_USER_ERROR, LOGIN_USER_INIT, LOGIN_USER_SUCCESS } from "./types";
 
-export const userLogin = ({ username, password }) => {
+export const userLogin = ({ username, password }, cb) => {
   return (dispatch) => {
     dispatch({ type: LOGIN_USER_INIT });
 
@@ -28,6 +28,8 @@ export const userLogin = ({ username, password }) => {
          // Guardando token en localStorage
           localStorage.jwt = data.jwt;
           loginSuccess(username);
+          // Si hay data ejecuto el callback
+          cb()
         }
         else{
           loginFail(data.error);
