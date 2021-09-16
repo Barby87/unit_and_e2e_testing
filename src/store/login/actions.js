@@ -1,6 +1,6 @@
 import { LOGIN_USER_ERROR, LOGIN_USER_INIT, LOGIN_USER_SUCCESS } from "./types";
 
-export const userLogin = ({ email, password }) => {
+export const userLogin = ({ username, password }) => {
   return (dispatch) => {
     dispatch({ type: LOGIN_USER_INIT });
 
@@ -12,22 +12,26 @@ export const userLogin = ({ email, password }) => {
     };
     
     try {
-      fetch("https://reqres.in/api/login", {
+      fetch("https://api-mock-login.herokuapp.com/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email,
+          username,
           password,
         }),
       }).then((response)=>{
         return response.json()
       }).then((data)=>{
-        if (data.token)
-          loginSuccess(email);
-        else
+        if (data.jwt){
+         // Guardando token en localStorage
+          localStorage.jwt = data.jwt;
+          loginSuccess(username);
+        }
+        else{
           loginFail(data.error);
+        }
       })
     } catch (error) {
       loginFail(error);

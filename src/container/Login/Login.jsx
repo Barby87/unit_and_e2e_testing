@@ -6,11 +6,11 @@ import { LoginForm } from "../login-form/LoginForm";
 export const Login = () => {
   const userData = useSelector(userLoginSelector);
 
-  if (userData.data && Object.keys(userData.data).length > 0) {
+  if (userData && Object.keys(userData).length > 0) {
     return (
       <div className="card">
         <p id="log-success">
-          Logged in as <b>{userData.data}</b>
+          Logged in as <b>{userData}</b>
         </p>
       </div>
     );

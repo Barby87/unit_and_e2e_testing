@@ -1,27 +1,26 @@
-import { LOGIN_USER_ERROR, LOGIN_USER_INIT, LOGIN_USER_SUCCESS } from "./types";
+import { LIST_USERS_INIT, LIST_USERS_SUCCESS, LIST_USERS_ERROR } from "./types";
 const initialStore = {
-  // usuario
-  data: {},
+  // Lista de Usuarios
+  data: [],
   error: null,
   success: null,
   loading: false,
 };
 
-
-export const loginReducer = (prevState = initialStore, action) => {
+export const usersReducer = (prevState = initialStore, action) => {
   switch (action.type) {
-    case LOGIN_USER_INIT:
+    case LIST_USERS_INIT:
       return {...prevState,
         loading: true,
       };
-    case LOGIN_USER_SUCCESS:
+    case LIST_USERS_SUCCESS:
       return {...prevState, 
         data: action.payload,
         error: false,
         success: true,
         loading: false,
       };
-    case LOGIN_USER_ERROR:
+    case LIST_USERS_ERROR:
       return {...prevState,
         error: action.payload,
         success: false,
